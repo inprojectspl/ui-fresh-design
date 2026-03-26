@@ -31,20 +31,20 @@ When activated, this skill turns Claude into a senior product designer and front
 
 ```bash
 cd your-project
-git clone https://github.com/YOUR_USERNAME/ui-fresh-design .claude/skills/ui-fresh-design
+git clone https://github.com/inprojectspl/ui-fresh-design .claude/skills/ui-fresh-design
 ```
 
 **Option B — Clone into user-level skills (available in all projects):**
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/ui-fresh-design ~/.claude/skills/ui-fresh-design
+git clone https://github.com/inprojectspl/ui-fresh-design ~/.claude/skills/ui-fresh-design
 ```
 
 **Option C — Add as a git submodule:**
 
 ```bash
 cd your-project
-git submodule add https://github.com/YOUR_USERNAME/ui-fresh-design .claude/skills/ui-fresh-design
+git submodule add https://github.com/inprojectspl/ui-fresh-design .claude/skills/ui-fresh-design
 ```
 
 ### Verify installation
