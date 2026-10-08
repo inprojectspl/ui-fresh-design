@@ -5,15 +5,35 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+## [1.2.0] - 2026-10-08
+
+### Added
+
+- Added scoped new-design, existing-product and audit workflows, evidence statuses and representative evaluation tasks.
+- Added generated plugin packaging while preserving the marketplace identifier ui-design.
+
+### Changed
+
+- Consolidated repeated instructions and made novelty, font choices, dark mode, loading and complexity estimates depend on product needs.
+- Marked historical analysis as superseded and aligned installation and reference documentation.
+
+### Fixed
+
+- Corrected large-text units, text-spacing overrides and target-size interpretation against WCAG 2.2.
+- Distinguished selected accessibility checks from a full conformance audit, and disabled semantics from activation and focus behavior.
+- Removed contradictory font bans and unsupported measurement or performance claims.
+
 ## [1.1.0] - 2026-03-27
 
 ### Added
-- **Anti-AI-Slop Protocol** — new mandatory section in SKILL.md explaining distributional convergence and defining slop markers across five categories: typography, color, layout, motion, and guidance-level
+- **Anti-AI-Slop Protocol** - new mandatory section in SKILL.md explaining distributional convergence and defining slop markers across five categories: typography, color, layout, motion, and guidance-level
 - **Three mandatory self-checks** before delivering any recommendation: substitution test, convergence test, authorship test
-- **Anti-slop gate** in Step 5 quality verification — 8-point originality checklist that must pass before delivery
-- **Mandatory structured context diagnosis** (Step 1) — requires product differentiation analysis and session character assessment before any design decisions
-- **Rejection justification** requirement in Step 2 — every design direction must name what was considered and rejected
-- **Signature element** requirement — every design must identify one intentionally distinctive element
+- **Anti-slop gate** in Step 5 quality verification - 8-point originality checklist that must pass before delivery
+- **Mandatory structured context diagnosis** (Step 1) - requires product differentiation analysis and session character assessment before any design decisions
+- **Rejection justification** requirement in Step 2 - every design direction must name what was considered and rejected
+- **Signature element** requirement - every design must identify one intentionally distinctive element
 - **7 guidance-level anti-patterns**: safe recommendations, trend name-dropping, font non-decisions, palette hedges, motion hand-waving, layout autopilot, consistency theater
 - **7 anti-AI-slop critical rules**: font blacklist (Inter, Roboto, Poppins, Arial, Helvetica), hedge language ban, secondary convergence prevention, signature element mandate
 - **Slop-risk ratings** on every visual direction in the design landscape table
@@ -45,11 +65,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dark mode implementation standard
 - Cost signals system (LOW / MEDIUM / HIGH)
 - Response format templates for design planning, review/audit, and component implementation
-- `references/color-systems.md` — palette construction, contrast verification, dark mode rules, product-type archetypes
-- `references/typography-guide.md` — type scale, font selection guidelines, variable font implementation, font overuse warnings
-- `references/animation-patterns.md` — functional motion philosophy, duration guidelines, CSS-first approach, reduced motion support, performance budget
-- `references/accessibility-checklist.md` — complete WCAG 2.2 AA checklist (perceivable, operable, understandable, robust) with common component patterns and testing workflow
-- `references/component-patterns.md` — universal state matrix, layout patterns (Bento Grid, Sidebar + Content, Split), common components, empty state guidelines, responsive breakpoint strategy
+- `references/color-systems.md` - palette construction, contrast verification, dark mode rules, product-type archetypes
+- `references/typography-guide.md` - type scale, font selection guidelines, variable font implementation, font overuse warnings
+- `references/animation-patterns.md` - functional motion philosophy, duration guidelines, CSS-first approach, reduced motion support, performance budget
+- `references/accessibility-checklist.md` - complete WCAG 2.2 AA checklist (perceivable, operable, understandable, robust) with common component patterns and testing workflow
+- `references/component-patterns.md` - universal state matrix, layout patterns (Bento Grid, Sidebar + Content, Split), common components, empty state guidelines, responsive breakpoint strategy
 - ANALYSIS.md with design rationale, competitor skill analysis, and example invocations
 - README.md with installation instructions (clone, user-level, submodule), file structure, workflow explanation
 - MIT License
@@ -57,3 +77,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [1.1.0]: https://github.com/inprojectspl/ui-fresh-design/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/inprojectspl/ui-fresh-design/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/inprojectspl/ui-fresh-design/releases/tag/v1.0.0
+
+[Unreleased]: https://github.com/inprojectspl/ui-fresh-design/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/inprojectspl/ui-fresh-design/releases/tag/v1.2.0
