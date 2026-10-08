@@ -10,7 +10,7 @@ The accessibility reference covers selected WCAG 2.2 checks, not a complete AA a
 
 ### AI Marketplace
 
-The plugin is distributed through `inprojects-ai-tools` from this repository's `plugin/` directory, pinned to tag `v1.2.0`. After the tag and marketplace update are published, install it in Claude Code:
+The plugin is distributed through `inprojects-ai-tools` from this repository's `plugin/` directory, pinned to tag `v1.2.1`. After the tag and marketplace update are published, install it in Claude Code:
 
 ```text
 /plugin install ui-design@inprojects-ai-tools
@@ -24,7 +24,7 @@ Keep a source checkout outside the application's skills directory, then export o
 
 ```sh
 skill_checkout=$(mktemp -d)
-git clone --branch v1.2.0 --depth 1 https://github.com/inprojectspl/ui-fresh-design.git "$skill_checkout/source"
+git clone --branch v1.2.1 --depth 1 https://github.com/inprojectspl/ui-fresh-design.git "$skill_checkout/source"
 mkdir -p .claude/skills/ui-fresh-design
 git -C "$skill_checkout/source" archive HEAD SKILL.md references LICENSE | tar -x -C .claude/skills/ui-fresh-design
 ```
@@ -37,7 +37,7 @@ If the team deliberately uses submodules, configure one explicitly instead of co
 
 ```sh
 git submodule add https://github.com/inprojectspl/ui-fresh-design.git .claude/skills/ui-fresh-design
-git -C .claude/skills/ui-fresh-design checkout v1.2.0
+git -C .claude/skills/ui-fresh-design checkout v1.2.1
 git add .gitmodules .claude/skills/ui-fresh-design
 ```
 
