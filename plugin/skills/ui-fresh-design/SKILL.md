@@ -1,6 +1,6 @@
 ---
 name: ui-fresh-design
-description: Design, implement, and review web UI/UX grounded in the product's users, existing design system, accessibility, and performance. Use for screens, components, visual direction, and UI improvements; excludes backend-only work, brand strategy, and native mobile design.
+description: Design, implement and review web UI/UX grounded in the product's users, existing design system, accessibility and performance. Use when the user asks to design a new screen or component, redesign or modernize an existing interface, build a dashboard, form or settings page, choose colors, typography, spacing or motion, or audit a frontend for UX and accessibility. Also use for Polish requests such as "zaprojektuj ekran", "popraw wygląd", "odśwież UI", "przegląd UX" or "dostępność interfejsu". Excludes backend-only work, brand strategy and native mobile design.
 ---
 
 # ui-fresh-design
