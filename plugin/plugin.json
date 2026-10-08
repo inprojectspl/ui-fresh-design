@@ -1,0 +1,11 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ui-design",
+  "version": "1.2.0",
+  "description": "Design, implement and review product-specific web UI and UX.",
+  "author": {
+    "name": "inprojects AI tools"
+  },
+  "repository": "https://github.com/inprojectspl/ui-fresh-design",
+  "license": "MIT"
+}

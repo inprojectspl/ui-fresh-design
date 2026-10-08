@@ -1,4 +1,6 @@
-# ui-fresh-design — Design Analysis & Rationale
+> Historical authoring notes from March 2026, retained for context. Reviewed on 2026-10-08: the current SKILL.md and references supersede all recommendations below. These notes are not instructions, current competitor research, measured performance, accessibility evidence or agent evaluation results. Claims about "complete" WCAG coverage, font bans, mandatory novelty and universal dark mode were corrected in 1.2.0.
+
+# ui-fresh-design - Design Analysis & Rationale
 
 ## 1. Executive Synthesis of Notebook Findings
 
@@ -7,7 +9,7 @@
 The 2026 design landscape is defined by five tensions:
 
 **Tension 1: Depth vs. Performance**
-Liquid Glass/Glassmorphism and immersive 3D are the most visually exciting trends, but they directly conflict with Core Web Vitals. The winning approach is surgical deployment — glass effects for modals and navigation panels (where the background is controlled), 3D reserved for hero moments with aggressive lazy loading.
+Liquid Glass/Glassmorphism and immersive 3D are the most visually exciting trends, but they directly conflict with Core Web Vitals. The winning approach is surgical deployment - glass effects for modals and navigation panels (where the background is controlled), 3D reserved for hero moments with aggressive lazy loading.
 
 **Tension 2: Personality vs. Usability**
 Neo-Brutalism, Cute-alism, and Dopamine Colors offer escape from "corporate template sameness," but they require precise restraint. The consensus: visual personality is surface-level (textures, type, color), while navigation, hierarchy, and accessibility remain strictly conventional.
@@ -16,7 +18,7 @@ Neo-Brutalism, Cute-alism, and Dopamine Colors offer escape from "corporate temp
 Agentic UX and AI-personalized layouts are the biggest product-thinking shift. Users are increasingly comfortable with AI-driven workflows BUT require transparency (show what the AI did), adjustability (let me override it), and escape hatches (let me go back to manual).
 
 **Tension 4: Maximalism vs. Cognitive Load**
-Bento grids, kinetic typography, scrollytelling, and tactile maximalism offer rich experiences — but only when content density is managed. Progressive disclosure, generous whitespace, and clear hierarchy are the antidote.
+Bento grids, kinetic typography, scrollytelling, and tactile maximalism offer rich experiences - but only when content density is managed. Progressive disclosure, generous whitespace, and clear hierarchy are the antidote.
 
 **Tension 5: Machine Experience (MX) vs. Human Experience**
 New in 2026: interfaces are read by AI agents, not just humans. Semantic HTML, semantic design tokens, and structured data are now functional requirements, not just best practices.
@@ -40,7 +42,7 @@ New in 2026: interfaces are read by AI agents, not just humans. Semantic HTML, s
 - Explicitly fights AI-generic aesthetics (calls out Inter, purple gradients, predictable layouts)
 - Good typography emphasis (distinctive fonts, unexpected pairings)
 - Encourages spatial composition experiments (asymmetry, overlap, grid-breaking)
-- Brief and focused — doesn't overload context
+- Brief and focused - doesn't overload context
 
 **What it misses:**
 - Zero accessibility guidance (no WCAG, no keyboard, no reduced motion)
@@ -49,9 +51,9 @@ New in 2026: interfaces are read by AI agents, not just humans. Semantic HTML, s
 - No structured output format (produces freeform creative output)
 - No product thinking (doesn't ask about user goals, jobs-to-be-done)
 - No implementation cost signals (recommends elaborate animations without noting complexity)
-- Tone is "art director" rather than "product designer" — great for portfolios, dangerous for SaaS
+- Tone is "art director" rather than "product designer" - great for portfolios, dangerous for SaaS
 - No dark mode guidance
-- No state design (hover, focus, error, empty, loading — none mentioned)
+- No state design (hover, focus, error, empty, loading - none mentioned)
 
 **Verdict:** Excellent at fighting bland AI output. Terrible at building real products. Treats UI as art, not as product interface.
 
@@ -66,9 +68,9 @@ New in 2026: interfaces are read by AI agents, not just humans. Semantic HTML, s
 - Pre-delivery validation checks
 
 **What it misses:**
-- Breadth over depth: 161 rules creates "consistency without conviction" — the exact anti-pattern the 2026 trends warn about
+- Breadth over depth: 161 rules creates "consistency without conviction" - the exact anti-pattern the 2026 trends warn about
 - Menu-driven approach (pick from 67 styles) instead of contextual reasoning
-- No hierarchy of importance — treats all visual decisions as equal
+- No hierarchy of importance - treats all visual decisions as equal
 - No performance awareness (same gap as frontend-design)
 - No modern 2026 trend awareness (no MX design, no agentic UX, no liquid glass nuance)
 - Automation over thinking: generates design systems in seconds, skipping the "why"
@@ -109,7 +111,7 @@ The skill should behave like a senior product designer who also understands fron
 
 5. **Performance is a design constraint.** If a choice kills LCP, it's a bad design choice. Period. Neither existing skill mentions this.
 
-6. **Structured output formats.** Consistent response structure for planning, review, and implementation — unlike frontend-design's freeform output.
+6. **Structured output formats.** Consistent response structure for planning, review, and implementation - unlike frontend-design's freeform output.
 
 7. **Progressive disclosure via reference files.** Detailed guidance on color, typography, animation, accessibility, and components lives in `references/` files that Claude loads only when needed. Keeps SKILL.md under the 5000-word target.
 
@@ -148,7 +150,7 @@ ui-fresh-design/
 
 ### Example 1: Redesigning an outdated enterprise dashboard
 
-**User:** "We have an old Angular dashboard for fleet management. It looks like it was designed in 2018 — lots of blue-grey gradients, tiny text, cramped tables. We're migrating to Next.js + Tailwind + shadcn/ui. How should we approach the visual redesign?"
+**User:** "We have an old Angular dashboard for fleet management. It looks like it was designed in 2018 - lots of blue-grey gradients, tiny text, cramped tables. We're migrating to Next.js + Tailwind + shadcn/ui. How should we approach the visual redesign?"
 
 **Expected behavior:**
 1. Ask about: user roles (dispatchers? managers?), primary tasks, session length, data density needs
@@ -179,7 +181,7 @@ ui-fresh-design/
 1. Read the screenshot
 2. Assess against: information hierarchy, typography quality, color coherence, spacing consistency, accessibility, mobile readiness, distinctiveness
 3. Rate: Needs Work / Acceptable / Strong / Excellent
-4. Specific callouts: "The hero section uses Inter at regular weight — this is generic. Switch to Cabinet Grotesk or Satoshi for the display heading to differentiate."
+4. Specific callouts: "The hero section uses Inter at regular weight - this is generic. Switch to Cabinet Grotesk or Satoshi for the display heading to differentiate."
 5. Flag issues by severity: "CRITICAL: The light grey text on white background fails WCAG contrast (estimated 2.8:1, needs 4.5:1)"
 6. Suggest 2026-relevant improvements with cost signals
 
@@ -197,12 +199,12 @@ ui-fresh-design/
 
 ### Example 5: Modernizing a mobile-first workflow screen
 
-**User:** "We have a step-by-step onboarding flow for our fitness app. It works but feels dated — plain white cards with grey buttons."
+**User:** "We have a step-by-step onboarding flow for our fitness app. It works but feels dated - plain white cards with grey buttons."
 
 **Expected behavior:**
-1. Direction: Dopamine Colors + subtle gamification (progress bar, micro-celebrations at step completion) — fitness context warrants energy
+1. Direction: Dopamine Colors + subtle gamification (progress bar, micro-celebrations at step completion) - fitness context warrants energy
 2. Specific: vibrant accent color for CTAs, progress indicator at top, card backgrounds with subtle gradient mesh
 3. Motion: step transition as horizontal slide (300ms ease-out), success checkmark animation on completion
-4. Mobile: thumb-friendly — primary CTA at bottom of screen within thumb reach, back button top-left
+4. Mobile: thumb-friendly - primary CTA at bottom of screen within thumb reach, back button top-left
 5. Accessibility: progress communicated via aria-valuenow, step transitions announced to screen readers
 6. Cost: LOW for color/typography refresh, MEDIUM for motion and gamification elements

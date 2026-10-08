@@ -1,158 +1,70 @@
 # ui-fresh-design
 
-A Claude Code skill that delivers opinionated, buildable UI/UX guidance for web applications — and actively fights the generic, over-smoothed design output that AI models produce by default.
+Design, implement and review web interfaces with concrete decisions grounded in user goals, product content and the existing design system.
 
-## The problem this skill solves
+The skill has three scopes: new design/exploration, a focused existing-product change, and audit. It preserves the emphasis on specificity, accessibility, useful states and implementation cost without requiring novelty, a font blacklist or a redesign for every fix. Requested variants are supported.
 
-AI models suffer from **distributional convergence**: they predict tokens from the statistical center of their training data, producing the "average of modern web design." The result is Inter fonts, purple gradients, three-column card grids, and recommendations like "use a clean color palette with a professional blue primary." This is **AI slop** — design guidance that sounds professional but makes no real decisions and could apply to any product.
-
-ui-fresh-design forces Claude to fight this tendency. Every recommendation must be grounded in the specific product context, pass explicit anti-slop checks, and reflect a genuine design judgment — not a statistical default.
-
-## What it does
-
-When activated, this skill turns Claude into a senior product designer and frontend architect who:
-
-- **Diagnoses** the product context before making any visual decisions (mandatory, structured, non-skippable)
-- **Commits** to a single opinionated direction with explicit justification — not a menu of options
-- **Plans** visual direction with exact specifications (colors, typography, layout, motion, signature element)
-- **Reviews** existing UIs for quality, trend alignment, accessibility gaps, and AI-slop markers
-- **Guides** component design with full state coverage (hover, focus, error, empty, loading)
-- **Self-checks** every recommendation against originality tests (substitution, convergence, authorship)
-- **Tags** every recommendation with an implementation cost signal (LOW / MEDIUM / HIGH)
-
-## What makes it different
-
-| Problem | How ui-fresh-design solves it |
-|---|---|
-| AI defaults to generic "modern SaaS" output | Built-in anti-AI-slop protocol with mandatory self-checks (substitution test, convergence test, authorship test) |
-| Style catalogs with 67 options ("pick one") | Analyzes context, recommends ONE direction, names what was rejected and why |
-| Recommendations that could apply to any product | Mandatory context diagnosis before any design decisions; every recommendation must reference the diagnosis |
-| No originality verification | Anti-slop gate in quality checklist: font specificity, color dominance, layout justification, signature element |
-| Zero accessibility guidance | WCAG 2.2 AA woven into every step |
-| No performance awareness | Core Web Vitals as a design constraint |
-| Trend-chasing without substance | Trends context-gated by product fit, with explicit slop-risk ratings |
-| Art direction without implementation reality | Every recommendation includes cost signals and trade-off analysis |
+The accessibility reference covers selected WCAG 2.2 checks, not a complete AA audit. Reports distinguish verified measurements, estimates, unverified areas and non-applicable checks. Core Web Vitals budgets, lab measurements and field data are separate. Aesthetic quality still needs human judgment.
 
 ## Installation
 
-### Claude Code (CLI / Desktop / Web)
+### AI Marketplace
 
-**Option A — Clone into project skills:**
+The plugin is distributed through `inprojects-ai-tools` from this repository's `plugin/` directory, pinned to tag `v1.2.0`. After the tag and marketplace update are published, install it in Claude Code:
 
-```bash
-cd your-project
-git clone https://github.com/inprojectspl/ui-fresh-design .claude/skills/ui-fresh-design
+```text
+/plugin install ui-design@inprojects-ai-tools
 ```
 
-**Option B — Clone into user-level skills (available in all projects):**
+For Codex, refresh the marketplace and select `ui-design` in the plugin directory, or use the commands supported by your installed CLI. The contained skill is `ui-fresh-design`. For UI design, the existing plugin selector `ui-design` is preserved.
 
-```bash
-git clone https://github.com/inprojectspl/ui-fresh-design ~/.claude/skills/ui-fresh-design
+### Standalone project or user installation
+
+Keep a source checkout outside the application's skills directory, then export only the skill files. This avoids a nested `.git` directory and excludes generated plugin copies and evaluations:
+
+```sh
+skill_checkout=$(mktemp -d)
+git clone --branch v1.2.0 --depth 1 https://github.com/inprojectspl/ui-fresh-design.git "$skill_checkout/source"
+mkdir -p .claude/skills/ui-fresh-design
+git -C "$skill_checkout/source" archive HEAD SKILL.md references LICENSE | tar -x -C .claude/skills/ui-fresh-design
 ```
 
-**Option C — Add as a git submodule:**
+Commit that ordinary directory in the parent project. For Claude user installation replace the destination with `~/.claude/skills/ui-fresh-design`. For Codex use `.agents/skills/ui-fresh-design` or `~/.agents/skills/ui-fresh-design`. Copy both `SKILL.md` and `references/`; copying only the entrypoint is insufficient. Existing root-level `SKILL.md` paths remain available.
 
-```bash
-cd your-project
-git submodule add https://github.com/inprojectspl/ui-fresh-design .claude/skills/ui-fresh-design
+To update, review the next release, fetch/check out its tag in the source checkout, repeat the archive export and commit the resulting diff. Review removed reference files as well; archive extraction does not delete obsolete files.
+
+If the team deliberately uses submodules, configure one explicitly instead of committing an ordinary nested clone:
+
+```sh
+git submodule add https://github.com/inprojectspl/ui-fresh-design.git .claude/skills/ui-fresh-design
+git -C .claude/skills/ui-fresh-design checkout v1.2.0
+git add .gitmodules .claude/skills/ui-fresh-design
 ```
 
-### Verify installation
+Other clones need `git submodule update --init --recursive` (or `git clone --recurse-submodules`). To update, fetch/check out the new tag within the submodule and commit the new gitlink in the parent. A submodule includes authoring/package files; prefer the archive method when only skill resources should be installed.
 
-In Claude Code, type:
+## Usage and results
 
-```
-/skills
-```
+- "Fix this button's focus without redesigning the page" preserves typography, palette and layout.
+- "Design three dashboard variants for fleet dispatchers" provides grounded alternatives.
+- "Audit this settings page" reports evidence, consequences and fixes without claiming unmeasured compliance.
 
-You should see `ui-fresh-design` in the list. Then just ask Claude to do any UI/UX work — the skill activates automatically based on context.
+The skill uses conditional references for color, typography, motion, components and selected accessibility checks. `ANALYSIS.md` is explicitly historical authoring context from March 2026, superseded by current instructions; its examples are not empirical evaluations.
 
-### Manual trigger
+## Maintenance and verification
 
-You can also invoke it directly:
+`SKILL.md` and `references/` at the repository root are the authoring sources. `plugin/.claude-plugin/plugin.json` holds the release metadata. The generated `plugin/skills/`, portable `plugin/plugin.json` and compatibility `.codex-plugin/plugin.json` are committed so installing a tag requires no build step:
 
-```
-/ui-fresh-design redesign the settings page for our SaaS app
-```
-
-## File structure
-
-```
-ui-fresh-design/
-  SKILL.md                                # Main skill file (loaded by Claude)
-  ANALYSIS.md                             # Design rationale and research synthesis
-  references/
-    color-systems.md                      # Palette construction, contrast, dark mode
-    typography-guide.md                   # Font pairing, variable fonts, type scale
-    animation-patterns.md                 # Motion principles, CSS vs JS, performance
-    accessibility-checklist.md            # WCAG 2.2 AA complete checklist
-    component-patterns.md                 # Layout patterns, states, responsive rules
+```sh
+python3 scripts/package_plugin.py
+python3 scripts/package_plugin.py --check
+claude plugin validate plugin
 ```
 
-The `references/` folder uses Claude's progressive disclosure — files are loaded only when Claude needs the detailed guidance, keeping the main context lean.
+This preserves standalone source paths while providing conventional plugin packaging for both runtimes. Generated files must not be edited directly. No MCP server, hook, extra permission or explicit-only invocation policy is required.
 
-## How it works
-
-The skill follows a structured workflow with anti-slop enforcement at every stage:
-
-1. **Context diagnosis** (mandatory) — Structured analysis of product type, audience, session character, job-to-be-done, and competitive differentiation. Must be completed before any design decisions.
-2. **Design direction** — Proposes ONE opinionated direction with full specifications. Names what was rejected and why. Identifies a signature element. Runs anti-convergence check.
-3. **Layout and components** — Defines hierarchy, components, states, responsive behavior — justified by content structure, not trend popularity.
-4. **Implementation guidance** — Framework-specific code direction and patterns with cost signals.
-5. **Quality verification with anti-slop gate** — Checks against originality (substitution, convergence, authorship tests), visual quality, UX, accessibility, performance, and implementation realism.
-
-## Anti-AI-slop defenses
-
-The skill embeds specific mechanisms to prevent distributional convergence:
-
-- **Mandatory context diagnosis** before any visual decisions — no guessing product context
-- **Substitution test**: could the recommendation apply to a different product? If yes, it's too generic
-- **Convergence test**: would 10 runs produce the same output? If yes, the model is sampling from the statistical center
-- **Authorship test**: does a human designer recognize this as a deliberate choice? If not, it's filler
-- **Explicit font blacklist** for AI-default fonts (Inter, Roboto, Poppins) unless already in the user's system
-- **Secondary convergence prevention**: banning one default must not create a new default (e.g., always using Geist)
-- **Rejection justification**: every design direction must name what was considered and rejected
-- **Signature element requirement**: every design must have one intentionally distinctive element
-- **Guidance-level anti-patterns**: catches not just visual clichés but recommendation clichés (hedge words, palette hedges, font non-decisions, layout autopilot)
-
-## 2026 design knowledge built in
-
-The skill has internalized current trends — but applies them only when context-justified, never for trend signaling:
-
-- Liquid Glass / Glassmorphism (high slop-risk — only when backgrounds are controlled)
-- Bento Grid layouts (medium slop-risk — only when content naturally varies in importance)
-- Variable fonts and kinetic typography (hero/storytelling only, never body text)
-- Mature dark mode (dark grey, not black; separate palettes)
-- Agentic UX patterns (transparency and escape hatches mandatory)
-- Machine Experience (MX) — semantic HTML for AI agents
-- Neo-Brutalism (low slop-risk, but context-gated to brands that fit)
-- Nature-Distilled and Dopamine color strategies (each gated by session type)
-
-It actively rejects both visual anti-patterns (meaningless parallax, unreadable glass, purple-gradient-on-white) and guidance-level anti-patterns (safe recommendations, trend name-dropping, font non-decisions, layout autopilot).
-
-## Example prompts
-
-```
-Design a dashboard for a fleet management SaaS. We use Next.js + Tailwind + shadcn/ui.
-```
-
-```
-Review this mockup for trend alignment and accessibility issues. [attach screenshot]
-```
-
-```
-Plan the visual direction for a fitness app onboarding flow. Mobile-first.
-```
-
-```
-Our settings page looks dated. How should we modernize it? We use React + Radix UI.
-```
-
-```
-I need a data table component with sorting, filtering, and pagination.
-Accessible, responsive, works in dark mode.
-```
+See [evaluation record](evals/README.md) for audit decisions, executable examples, exact versions and limitations. Example execution and agent behavioral evaluation are separate. See [CHANGELOG](CHANGELOG.md) for releases.
 
 ## License
 
-MIT
+MIT.
